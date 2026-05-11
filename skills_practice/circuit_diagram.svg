@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+    </marker>
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5f2a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#0d3d16;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="ledGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="50%" style="stop-color:#ffd93d"/>
+      <stop offset="100%" style="stop-color:#6bcb77"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="#1e1e2e"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#cdd6f4" font-family="monospace" font-size="20" font-weight="bold">
+    PIR Motion Sensor + WS2812B LED Strip Circuit
+  </text>
+  <text x="400" y="55" text-anchor="middle" fill="#a6adc8" font-family="monospace" font-size="12">
+    Arduino Uno R3 — Interactive Installation
+  </text>
+
+  <!-- Arduino Board -->
+  <rect x="280" y="100" width="240" height="160" rx="8" fill="url(#boardGrad)" stroke="#2d8f4e" stroke-width="3"/>
+  <text x="400" y="125" text-anchor="middle" fill="#aaffaa" font-family="monospace" font-size="14" font-weight="bold">Arduino Uno R3</text>
+
+  <!-- Digital Pins -->
+  <g id="digital-pins">
+    <text x="285" y="148" fill="#cdd6f4" font-family="monospace" font-size="9">D2</text>
+    <rect x="275" y="140" width="12" height="8" fill="#ff7f50" stroke="#fff" stroke-width="0.5"/>
+    <text x="285" y="163" fill="#cdd6f4" font-family="monospace" font-size="9">D3</text>
+    <rect x="275" y="155" width="12" height="8" fill="#ff7f50" stroke="#fff" stroke-width="0.5"/>
+    <text x="285" y="178" fill="#cdd6f4" font-family="monospace" font-size="9">D4</text>
+    <rect x="275" y="170" width="12" height="8" fill="#ff7f50" stroke="#fff" stroke-width="0.5"/>
+    <text x="285" y="193" fill="#cdd6f4" font-family="monospace" font-size="9">D5</text>
+    <rect x="275" y="185" width="12" height="8" fill="#ff7f50" stroke="#fff" stroke-width="0.5"/>
+  </g>
+
+  <!-- 5V Pin -->
+  <rect x="515" y="140" width="12" height="8" fill="#ff4444" stroke="#fff" stroke-width="0.5"/>
+  <text x="530" y="148" fill="#cdd6f4" font-family="monospace" font-size="9">5V</text>
+
+  <!-- GND Pins -->
+  <rect x="515" y="200" width="12" height="8" fill="#444" stroke="#fff" stroke-width="0.5"/>
+  <text x="530" y="208" fill="#cdd6f4" font-family="monospace" font-size="9">GND</text>
+  <rect x="515" y="220" width="12" height="8" fill="#444" stroke="#fff" stroke-width="0.5"/>
+  <text x="530" y="228" fill="#cdd6f4" font-family="monospace" font-size="9">GND</text>
+
+  <!-- A0 Pin -->
+  <rect x="275" y="240" width="12" height="8" fill="#50fa7b" stroke="#fff" stroke-width="0.5"/>
+  <text x="285" y="248" fill="#cdd6f4" font-family="monospace" font-size="9">A0</text>
+
+  <!-- USB Port -->
+  <rect x="360" y="250" width="80" height="15" rx="2" fill="#333" stroke="#555" stroke-width="1"/>
+  <text x="400" y="261" text-anchor="middle" fill="#888" font-family="monospace" font-size="8">USB-B</text>
+
+  <!-- PIR Sensor Module -->
+  <g id="pir-sensor" transform="translate(60, 120)">
+    <rect x="0" y="0" width="140" height="100" rx="6" fill="#2d4a5e" stroke="#4ecdc4" stroke-width="2"/>
+    <text x="70" y="20" text-anchor="middle" fill="#4ecdc4" font-family="monospace" font-size="12" font-weight="bold">PIR Sensor</text>
+    <text x="70" y="35" text-anchor="middle" fill="#a8b8c8" font-family="monospace" font-size="9">HC-SR501</text>
+
+    <!-- Sensor Dome -->
+    <ellipse cx="70" cy="60" rx="30" ry="25" fill="#1a2a35" stroke="#4ecdc4" stroke-width="1.5"/>
+    <ellipse cx="70" cy="60" rx="20" ry="18" fill="none" stroke="#4ecdc4" stroke-width="0.5" stroke-dasharray="3,2"/>
+
+    <!-- Pins -->
+    <text x="15" y="85" fill="#cdd6f4" font-family="monospace" font-size="8">VCC(5V)</text>
+    <rect x="5" y="78" width="10" height="6" fill="#ff4444"/>
+    <text x="15" y="98" fill="#cdd6f4" font-family="monospace" font-size="8">OUT</text>
+    <rect x="5" y="91" width="10" height="6" fill="#ffd93d"/>
+    <text x="100" y="85" fill="#cdd6f4" font-family="monospace" font-size="8">GND</text>
+    <rect x="95" y="78" width="10" height="6" fill="#444"/>
+  </g>
+
+  <!-- WS2812B LED Strip -->
+  <g id="led-strip" transform="translate(560, 130)">
+    <rect x="0" y="0" width="160" height="80" rx="6" fill="#2a2a3a" stroke="#bd93f9" stroke-width="2"/>
+    <text x="80" y="20" text-anchor="middle" fill="#bd93f9" font-family="monospace" font-size="12" font-weight="bold">WS2812B Strip</text>
+    <text x="80" y="35" text-anchor="middle" fill="#a8b8c8" font-family="monospace" font-size="9">NeoPixel 12 LEDs</text>
+
+    <!-- LEDs -->
+    <g transform="translate(15, 45)">
+      <circle cx="0" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+      <circle cx="25" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+      <circle cx="50" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+      <circle cx="75" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+      <circle cx="100" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+      <circle cx="125" cy="0" r="8" fill="url(#ledGrad)" filter="url(#glow)"/>
+    </g>
+
+    <!-- Pins -->
+    <text x="15" y="72" fill="#cdd6f4" font-family="monospace" font-size="8">DI</text>
+    <rect x="5" y="65" width="10" height="6" fill="#ffd93d"/>
+    <text x="55" y="72" fill="#cdd6f4" font-family="monospace" font-size="8">VCC</text>
+    <rect x="45" y="65" width="10" height="6" fill="#ff4444"/>
+    <text x="105" y="72" fill="#cdd6f4" font-family="monospace" font-size="8">GND</text>
+    <rect x="95" y="65" width="10" height="6" fill="#444"/>
+  </g>
+
+  <!-- Wires -->
+  <!-- PIR VCC to Arduino 5V -->
+  <path d="M 145 198 L 145 280 L 275 144" fill="none" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="160" y="240" fill="#ff6b6b" font-family="monospace" font-size="10">5V</text>
+
+  <!-- PIR OUT to Arduino D2 -->
+  <path d="M 145 211 L 145 300 L 275 159" fill="none" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="160" y="270" fill="#ffd93d" font-family="monospace" font-size="10">SIG</text>
+
+  <!-- PIR GND to Arduino GND -->
+  <path d="M 195 198 L 195 320 L 515 224" fill="none" stroke="#888" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="300" y="300" fill="#888" font-family="monospace" font-size="10">GND</text>
+
+  <!-- LED DI to Arduino D3 -->
+  <path d="M 560 195 L 520 195 L 520 163" fill="none" stroke="#ffd93d" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- LED VCC to Arduino 5V -->
+  <path d="M 605 195 L 630 195 L 630 148" fill="none" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- LED GND to Arduino GND -->
+  <path d="M 655 195 L 680 195 L 680 228" fill="none" stroke="#888" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Potentiometer (analog input) -->
+  <g id="pot" transform="translate(60, 280)">
+    <rect x="0" y="0" width="100" height="70" rx="6" fill="#3d3d5c" stroke="#f5c211" stroke-width="2"/>
+    <text x="50" y="18" text-anchor="middle" fill="#f5c211" font-family="monospace" font-size="11" font-weight="bold">Potentiometer</text>
+    <text x="50" y="32" text-anchor="middle" fill="#a8b8c8" font-family="monospace" font-size="9">10kΩ</text>
+    <line x1="50" y1="38" x2="50" y2="55" stroke="#f5c211" stroke-width="2"/>
+    <circle cx="50" cy="58" r="4" fill="#f5c211"/>
+    <text x="20" y="65" fill="#cdd6f4" font-family="monospace" font-size="8">A0</text>
+    <rect x="10" y="58" width="10" height="6" fill="#50fa7b"/>
+  </g>
+
+  <!-- Pot to Arduino A0 -->
+  <path d="M 160 308 L 200 308 L 200 248 L 275 248" fill="none" stroke="#50fa7b" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="210" y="270" fill="#50fa7b" font-family="monospace" font-size="10">ADC</text>
+
+  <!-- Legend -->
+  <g id="legend" transform="translate(600, 350)">
+    <rect x="0" y="0" width="180" height="120" rx="6" fill="#252535" stroke="#585b70" stroke-width="1"/>
+    <text x="90" y="18" text-anchor="middle" fill="#cdd6f4" font-family="monospace" font-size="11" font-weight="bold">Signal Flow</text>
+    <line x1="15" y1="35" x2="55" y2="35" stroke="#ff4444" stroke-width="3"/>
+    <text x="65" y="39" fill="#ff6b6b" font-family="monospace" font-size="9">Power (5V)</text>
+    <line x1="15" y1="55" x2="55" y2="55" stroke="#ffd93d" stroke-width="3"/>
+    <text x="65" y="59" fill="#ffd93d" font-family="monospace" font-size="9">Signal</text>
+    <line x1="15" y1="75" x2="55" y2="75" stroke="#50fa7b" stroke-width="3"/>
+    <text x="65" y="79" fill="#50fa7b" font-family="monospace" font-size="9">Analog Input</text>
+    <line x1="15" y1="95" x2="55" y2="95" stroke="#888" stroke-width="3"/>
+    <text x="65" y="99" fill="#888" font-family="monospace" font-size="9">Ground</text>
+  </g>
+
+  <!-- IPO Annotation Boxes -->
+  <g id="ipo-annotation" transform="translate(20, 400)">
+    <rect x="0" y="0" width="750" height="85" rx="6" fill="#1a1a2e" stroke="#89b4fa" stroke-width="2"/>
+    <text x="15" y="20" fill="#89b4fa" font-family="monospace" font-size="11" font-weight="bold">INPUT</text>
+    <text x="15" y="38" fill="#cdd6f4" font-family="monospace" font-size="9">PIR Sensor detects infrared radiation (motion) within 7m range</text>
+    <text x="15" y="55" fill="#cdd6f4" font-family="monospace" font-size="9">Potentiometer adjusts sensitivity threshold (analog voltage 0-5V)</text>
+
+    <line x1="250" y1="15" x2="280" y2="15" stroke="#f5c211" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="265" y="10" text-anchor="middle" fill="#f5c211" font-family="monospace" font-size="9">×</text>
+
+    <text x="285" y="20" fill="#f5c211" font-family="monospace" font-size="11" font-weight="bold">PROCESSING</text>
+    <text x="285" y="38" fill="#cdd6f4" font-family="monospace" font-size="9">Arduino reads digital pin D2 + analog pin A0</text>
+    <text x="285" y="55" fill="#cdd6f4" font-family="monospace" font-size="9">Logic: if motion detected → fade LEDs ON; else → fade LEDs OFF</text>
+
+    <line x1="545" y1="15" x2="575" y2="15" stroke="#bd93f9" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="560" y="10" text-anchor="middle" fill="#bd93f9" font-family="monospace" font-size="9">→</text>
+
+    <text x="580" y="20" fill="#bd93f9" font-family="monospace" font-size="11" font-weight="bold">OUTPUT</text>
+    <text x="580" y="38" fill="#cdd6f4" font-family="monospace" font-size="9">WS2812B LEDs display RGB color gradient based on state</text>
+    <text x="580" y="55" fill="#cdd6f4" font-family="monospace" font-size="9">Sleeping: warm amber | Awake: cool blue | Active: full RGB cycle</text>
+  </g>
+</svg>
