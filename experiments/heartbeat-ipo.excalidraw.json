@@ -1,0 +1,94 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-heartbeat",
+  "elements": [
+    {
+      "id": "input-box",
+      "type": "rectangle",
+      "x": 50,
+      "y": 100,
+      "width": 120,
+      "height": 60,
+      "fillStyle": "solid",
+      "backgroundColor": "#fff9ef",
+      "strokeColor": "#333"
+    },
+    {
+      "id": "input-label",
+      "type": "text",
+      "x": 60,
+      "y": 115,
+      "text": "INPUT\nSensor Signal",
+      "fontSize": 14
+    },
+    {
+      "id": "arrow1",
+      "type": "arrow",
+      "x": 170,
+      "y": 130,
+      "width": 80,
+      "height": 0,
+      "points": [[0, 0], [80, 0]]
+    },
+    {
+      "id": "proc-box",
+      "type": "rectangle",
+      "x": 250,
+      "y": 100,
+      "width": 120,
+      "height": 60,
+      "fillStyle": "solid",
+      "backgroundColor": "#e8f4e8",
+      "strokeColor": "#333"
+    },
+    {
+      "id": "proc-label",
+      "type": "text",
+      "x": 260,
+      "y": 115,
+      "text": "PROCESS\nController",
+      "fontSize": 14
+    },
+    {
+      "id": "arrow2",
+      "type": "arrow",
+      "x": 370,
+      "y": 130,
+      "width": 80,
+      "height": 0,
+      "points": [[0, 0], [80, 0]]
+    },
+    {
+      "id": "output-box",
+      "type": "rectangle",
+      "x": 450,
+      "y": 100,
+      "width": 120,
+      "height": 60,
+      "fillStyle": "solid",
+      "backgroundColor": "#e8e8f4",
+      "strokeColor": "#333"
+    },
+    {
+      "id": "output-label",
+      "type": "text",
+      "x": 465,
+      "y": 115,
+      "text": "OUTPUT\nActuator",
+      "fontSize": 14
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "x": 200,
+      "y": 40,
+      "text": "Interactive Device IPO Flow",
+      "fontSize": 18,
+      "fontFamily": " cursive"
+    }
+  ],
+  "appState": {
+    "theme": "light"
+  }
+}
